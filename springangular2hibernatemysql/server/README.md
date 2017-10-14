@@ -1,0 +1,1 @@
+https://www.concretepage.com/spring-boot/spring-boot-rest-angular-2-jpa-hibernate-mysql-crud-example#controller
