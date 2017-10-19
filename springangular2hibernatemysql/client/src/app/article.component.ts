@@ -37,4 +37,70 @@ export class ArticleComponent {
             errorCode => this.statusCode = errorCode);
     }
 
+
+    onArticleSubmit() {
+        this.processValidation = true;
+        if (this.articleForm.invalid) {
+            return;
+        }
+
+        this.preProcessConfig();
+        let title = this.articleForm.get('title').value;
+        let category = this.articleForm.get('category').value;
+        if (this.articleIdToUpdate == null) {
+            let article = new Article(null, title, category);
+            this.articleService.createArticle(article)
+                .subscribe(successCode => {
+                    this.statusCode = successCode;
+                    this.getAllArticles();
+                    this.backToCreateArticle();
+                }, errorCode => this.statusCode = errorCode);
+        } else {
+            let article = new Article(this.articleIdToUpdate, title, category);
+            this.articleService.updateArticle(article)
+                .subscribe(successCode => {
+                    this.statusCode = successCode;
+                    this.getAllArticles();
+                    this.backToCreateArticle();
+                }, errorCode => this.statusCode = errorCode);
+        }
+    }
+
+
+    loadArticle(articleId: string) {
+        this.preProcessConfig();
+        this.articleService.getArticleById(articleId)
+            .subscribe(article => {
+                this.articleIdToUpdate = article.articleId;
+                this.articleForm.setValue({
+                    title: article.title,
+                    category: article.category
+                });
+                this.requestProcessing = false;
+                this.processValidation = true;
+            }, errorCode => this.statusCode = errorCode);
+    }
+
+    deleteArticle(articleId: string) {
+        console.log('articleId>>'+articleId);
+        this.preProcessConfig();
+        this.articleService.deleteArticle(articleId)
+            .subscribe(successCode => {
+                this.statusCode = successCode;
+                this.getAllArticles();
+                this.backToCreateArticle();
+            }, errorCode => this.statusCode = errorCode);
+    }
+
+    preProcessConfig() {
+        this.statusCode = null;
+        this.requestProcessing = true;
+    }
+
+    backToCreateArticle() {
+        this.articleIdToUpdate = null;
+        this.articleForm.reset();
+        this.processValidation = false;
+    }
+
 }

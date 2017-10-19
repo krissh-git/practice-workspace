@@ -15,6 +15,18 @@ export class ArticleService {
 
     }
 
+
+    getArticleById(articleId: string): Observable<Article> {
+        let cHeaders = new Headers({ 'Content-Type': 'application/json' });
+        let cParams = new URLSearchParams();
+        cParams.set('id', articleId);
+        let options = new RequestOptions({ headers: cHeaders, params: cParams });
+        return this.http
+            .get(this.articleURL, options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
     getAllArticles(): Observable<Article[]> {
         return this.http
             .get(this.allArticleURL)
@@ -44,6 +56,7 @@ export class ArticleService {
         let cHeaders = new Headers({ 'Content-Type': 'application/json' });
         let cParams = new URLSearchParams();
         cParams.set('id', articleId);
+        console.log('articleId>>>>>>>>>>>>>>>>>'+articleId);
         let options = new RequestOptions({ headers: cHeaders, params: cParams });
         return this.http
             .delete(this.articleURL, options)

@@ -1,0 +1,78 @@
+<h1>Ang 2 CRUD</h1>
+<h3 *ngIf="articleIdToUpdate; else create">
+    Update article for {{articleIdToUpdate}}
+</h3>
+
+<ng-template #create>
+    <h3>Create new article</h3>
+</ng-template>
+
+
+<div>
+    <form [formGroup]="articleForm" (ngSubmit)="onArticleSubmit()">
+        <table>
+            <tr>
+                <td>Title: </td>
+                <td>
+                    <input formControlName="title">
+                    <label *ngIf="articleForm.get('title').invalid && processValidation" [ngClass]="'error'">Title is required.</label>
+                </td>
+            </tr>
+            <tr>
+                <td>Category: </td>
+                <td>
+                    <input formControlName="category">
+                    <label *ngIf="articleForm.get('category').invalid && processValidation" [ngClass]="'error'">Category is required.</label>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button *ngIf="!articleIdToUpdate">Create</button>
+                    <button *ngIf="articleIdToUpdate">Update</button>
+                    <button (click)="backToCreateArticle()" *ngIf="articleIdToUpdate">Go back</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <br/>
+
+    <div *ngIf="statusCode; else processing">
+        <div *ngIf="statusCode==201" [ngClass]="'success'">
+            Article added successfully.
+        </div>
+        <div *ngIf="statusCode==409" [ngClass]="'success'">
+            Article already exists.
+        </div>
+        <div *ngIf="statusCode==200" [ngClass]="'success'">
+            Article updated successfully
+        </div>
+        <div *ngIf="statusCode==204" [ngClass]="'success'">
+            Article deleted successfully
+        </div>
+        <div *ngIf="statusCode==500" [ngClass]="'success'">
+            Internal Server Error
+        </div>
+    </div>
+
+    <ng-template #processing>
+        <img *ngIf="requestProcessing" src="assets/images/loading.gif">
+    </ng-template>
+</div>
+
+<h3>Article Details</h3>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Category</th>
+        <th></th>
+        <th></th>
+    </tr>
+    <tr *ngFor="let article of allArticles">
+        <td>{{article.articleId}}</td>
+        <td>{{article.title}}</td>
+        <td>{{article.category}}</td>
+        <td><button type="button" (click)="loadArticle(article.articleId)">Edit</button></td>
+        <td><button type="button" (click)="deleteArticle(article.articleId)">Delete</button></td>
+    </tr>
+</table>
