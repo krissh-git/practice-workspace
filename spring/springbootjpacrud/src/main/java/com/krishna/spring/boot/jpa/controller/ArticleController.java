@@ -2,6 +2,8 @@ package com.krishna.spring.boot.jpa.controller;
 
 import com.krishna.spring.boot.jpa.entity.Article;
 import com.krishna.spring.boot.jpa.service.ArticleService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,11 +12,9 @@ import java.util.List;
 @RequestMapping("crud")
 public class ArticleController {
 
+    @Autowired
+    @Qualifier("ArticleServiceJDBCImpl")
     private ArticleService articleService;
-
-    public ArticleController(ArticleService articleService) {
-        this.articleService = articleService;
-    }
 
     @GetMapping("articles")
     public List<Article> getArticles() {

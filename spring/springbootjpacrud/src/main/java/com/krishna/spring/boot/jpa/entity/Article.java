@@ -17,6 +17,15 @@ public class Article implements Serializable {
     @Column(name = "category")
     private String category;
 
+    public Article() {
+    }
+
+    public Article(int articleId, String title, String category) {
+        this.articleId = articleId;
+        this.title = title;
+        this.category = category;
+    }
+
     public int getArticleId() {
         return articleId;
     }
