@@ -14,3 +14,5 @@ http://www.mkyong.com/all-tutorials-on-mkyong-com/
 https://fastfoodcoding.com/tutorials/1503156546006/crud-operations-using-spring-boot-mongodb
 
 http://www.baeldung.com/configuration-properties-in-spring-boot
+
+http://www.springboottutorial.com/introduction-to-jpa-with-spring-boot-data-jpa

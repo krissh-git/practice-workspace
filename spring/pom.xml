@@ -25,6 +25,7 @@
         <module>springsecuritymysql</module>
         <module>springbootjpacrud</module>
         <module>springbootdatamongodb</module>
+        <module>springbootjpah2</module>
     </modules>
 
 </project>
