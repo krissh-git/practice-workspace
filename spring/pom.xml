@@ -26,6 +26,7 @@
         <module>springbootjpacrud</module>
         <module>springbootdatamongodb</module>
         <module>springbootjpah2</module>
+        <module>springbootrestws</module>
     </modules>
 
 </project>

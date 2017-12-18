@@ -16,3 +16,5 @@ https://fastfoodcoding.com/tutorials/1503156546006/crud-operations-using-spring-
 http://www.baeldung.com/configuration-properties-in-spring-boot
 
 http://www.springboottutorial.com/introduction-to-jpa-with-spring-boot-data-jpa
+
+https://dzone.com/articles/creating-a-rest-api-with-java-and-spring
