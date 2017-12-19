@@ -45,6 +45,8 @@
         <module>springbootrestws</module>
         <module>ms-discovery</module>
         <module>ms-config-server</module>
+        <module>ms-user</module>
+        <module>ms-mail</module>
     </modules>
 
 </project>
