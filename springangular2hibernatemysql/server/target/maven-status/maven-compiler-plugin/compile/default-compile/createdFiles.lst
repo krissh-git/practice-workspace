@@ -1,0 +1,7 @@
+com/poc/springangular2hibernatemysql/dao/ArticleDaoImpl.class
+com/poc/springangular2hibernatemysql/service/ArticleServiceImpl.class
+com/poc/springangular2hibernatemysql/controller/ArticleController.class
+com/poc/springangular2hibernatemysql/service/ArticleService.class
+com/poc/springangular2hibernatemysql/model/Article.class
+com/poc/springangular2hibernatemysql/dao/ArticleDao.class
+com/poc/springangular2hibernatemysql/StartApplication.class

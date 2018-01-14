@@ -1,3 +1,0 @@
-http://www.allprogrammingtutorials.com/tutorials/storm-integration-with-kafka.php
-
-http://vishnuviswanath.com/realtime-storm-kafka1.html

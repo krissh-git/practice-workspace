@@ -122,3 +122,6 @@ hs_err_pid*
 
 
 /target
+/.metadata/
+/.metadata/
+/.recommenders/
